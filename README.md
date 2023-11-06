@@ -6,6 +6,24 @@
 
 <img src="https://raw.githubusercontent.com/furkanayaz/Cellular/master/ss.jpeg" title="Logo" align="middle" alt="Cellular Library">
 
+## How to Install?
+Step 1. Add the JitPack repository to your build file
+Add it in your root build.gradle at the end of repositories:
+```
+allprojects {
+        repositories {
+            ...
+	    // In Kotlin DSL: maven { url = uri("https://www.jitpack.io" ) }
+            maven { url "https://jitpack.io" }
+        }
+}
+```
+Step 2. Add the dependency
+```
+dependencies {
+	      implementation 'com.github.furkanayaz:Cellular-TableLayout:1.4'
+}
+```
 ## Cellular IN ADDITION
 
 * Contains header columns.
