@@ -17,3 +17,5 @@ C
 settings.gradle.kts,7\4\749edfcc96398253e5b3416184e95c46621da850
 ;
 jitpack.yml,3\f\3f384c5ac91d01ea9ab11981ab87f1d958f63284
+@
+build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
