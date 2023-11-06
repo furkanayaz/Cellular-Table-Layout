@@ -21,3 +21,5 @@ C
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
 b
 2cellular/src/main/java/com/fa/cellular/Cellular.kt,f\0\f03d3046c6bf53dab90f056a97dbf893e3d67b99
+X
+(gradle/wrapper/gradle-wrapper.properties,f\b\fbe448ebfc3eb2d4e308f6b8b043666f5b57235e
