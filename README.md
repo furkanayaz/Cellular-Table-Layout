@@ -4,7 +4,7 @@
 
 ## SCREENSHOT
 
-<img src="https://raw.githubusercontent.com/furkanayaz/Cellular-TableLayout/master/ss.jpeg" title="Logo" align="middle" alt="Cellular Library">
+<img src="https://raw.githubusercontent.com/furkanayaz/Cellular-TableLayout/master/layout.jpeg" title="Logo" align="middle" alt="Cellular Library">
 
 ## How to Install?
 Step 1. Add the JitPack repository to your build file
