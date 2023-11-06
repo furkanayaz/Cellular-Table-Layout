@@ -1,10 +1,10 @@
-<img src="https://raw.githubusercontent.com/furkanayaz/Cellular/master/cellular.png" width="180" height="180" title="Logo" align="middle" alt="Cellular Library">
+<img src="https://raw.githubusercontent.com/furkanayaz/Cellular-TableLayout/master/cellular.png" width="180" height="180" title="Logo" align="middle" alt="Cellular Library">
 
 # Cellular is a Table Library on Android!
 
 ## SCREENSHOT
 
-<img src="https://raw.githubusercontent.com/furkanayaz/Cellular/master/ss.jpeg" title="Logo" align="middle" alt="Cellular Library">
+<img src="https://raw.githubusercontent.com/furkanayaz/Cellular-TableLayout/master/ss.jpeg" title="Logo" align="middle" alt="Cellular Library">
 
 ## How to Install?
 Step 1. Add the JitPack repository to your build file
