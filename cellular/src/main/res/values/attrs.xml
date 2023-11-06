@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="Cellular">
+
+        <!-- General Attributes -->
+        <attr name="enableDivider" format="boolean" />
+        <attr name="divColor" format="enum">
+            <enum name="black" value="0" />
+            <enum name="white" value="1" />
+        </attr>
+
+        <!-- Header Attributes -->
+        <attr name="headerPadding" format="dimension" />
+        <attr name="headerBgColor" format="color" />
+
+        <attr name="headerTextGravity" format="enum">
+            <enum name="start" value="0" />
+            <enum name="end" value="1" />
+            <enum name="top" value="2" />
+            <enum name="center" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+        <attr name="headerTextSize" format="dimension" />
+        <attr name="headerTextColor" format="color" />
+        <attr name="headerTextMaxLines" format="integer" />
+        <attr name="headerTextEllipsize" format="integer" />
+        <attr name="headerTextAllCaps" format="boolean" />
+        <attr name="headerTextStyle" format="integer" />
+
+        <!-- Content Attributes -->
+        <attr name="contentPadding" format="dimension" />
+        <attr name="contentBgColor" format="color" />
+
+        <attr name="contentTextGravity" format="enum">
+            <enum name="start" value="0" />
+            <enum name="end" value="1" />
+            <enum name="top" value="2" />
+            <enum name="center" value="3" />
+            <enum name="bottom" value="4" />
+        </attr>
+        <attr name="contentTextSize" format="dimension" />
+        <attr name="contentTextColor" format="color" />
+        <attr name="contentTextMaxLines" format="integer" />
+        <attr name="contentTextEllipsize" format="integer" />
+        <attr name="contentTextAllCaps" format="boolean" />
+        <attr name="contentTextStyle" format="integer" />
+    </declare-styleable>
+</resources>
