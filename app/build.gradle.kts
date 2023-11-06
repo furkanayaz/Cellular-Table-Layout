@@ -7,13 +7,19 @@ android {
     namespace = "com.fa.cellularexample"
     compileSdk = 34
 
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://www.jitpack.io" ) }
+    }
+
     defaultConfig {
         applicationId = "com.fa.cellularexample"
         minSdk = 21
         //noinspection EditedTargetSdkVersion
         targetSdk = 34
-        versionCode = 3
-        versionName = "1.2"
+        versionCode = 4
+        versionName = "1.3"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -28,11 +34,11 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
 }
 

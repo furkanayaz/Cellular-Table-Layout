@@ -19,3 +19,5 @@ C
 jitpack.yml,3\f\3f384c5ac91d01ea9ab11981ab87f1d958f63284
 @
 build.gradle.kts,d\b\dbcff70658daf80b53ce624f6adcaa529df5ed8d
+b
+2cellular/src/main/java/com/fa/cellular/Cellular.kt,f\0\f03d3046c6bf53dab90f056a97dbf893e3d67b99
