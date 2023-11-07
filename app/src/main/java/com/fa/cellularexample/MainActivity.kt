@@ -2,7 +2,6 @@ package com.fa.cellularexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.fa.cellular.Cellular
 import com.fa.cellularexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,8 +12,8 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val headerItems: List<String> = listOf("Full Name", "Age", "OCCUPATION", "Country")
-
+        val headerItems: MutableList<String> =
+            mutableListOf("Full Name", "Age", "OCCUPATION", "Country")
         val contentItems: MutableList<String> = mutableListOf()
 
         val persons: List<Person> = listOf(
@@ -23,7 +22,7 @@ class MainActivity : AppCompatActivity() {
             Person("KEVIN WHITE", 34, "Police Officer", "USA"),
             Person("Laure Carpenter", 39, "Medicine", "UK"),
             Person("Laure Carpenter", 39, "Medicine", "UK"),
-            Person("STEPHEN KING", 39, "Writer", "USA")
+            Person("STEPHEN KING", 39, "WRITER", "USA")
         )
 
         persons.forEach {
@@ -33,9 +32,15 @@ class MainActivity : AppCompatActivity() {
             contentItems.add(it.country)
         }
 
-        binding.cellular.setItems(
-            headerItems, contentItems
-        )
+        /*
+         *  Programmatically...
+            val cellular = Cellular(context = this@MainActivity, properties = Properties())
+            cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+            binding.clMain.addView(cellular.build())
+        *
+        * */
+
+        binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
 
         binding.cellular.build()
 

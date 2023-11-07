@@ -7,6 +7,7 @@ import android.widget.TableRow
 import com.fa.cellular.R
 import com.fa.cellular.enums.Section
 import com.fa.cellular.models.Properties
+import com.fa.cellular.models.getColor
 import com.fa.cellular.models.getString
 import com.fa.cellular.models.getDivDrawable
 
@@ -29,7 +30,12 @@ fun addTableRow(
 
         when (sectionType) {
             Section.HEADER -> {
-                it.setBackgroundColor(props.headerProperties.headerBgColor)
+                it.setBackgroundColor(
+                    getColor(
+                        context = context,
+                        resId = props.headerProperties.headerBgColor
+                    )
+                )
 
                 val headerItems: List<String> = props.headerProperties.getHeaderItems()
 
@@ -46,7 +52,7 @@ fun addTableRow(
 
             Section.CONTENT -> {
                 it.setBackgroundColor(
-                    props.contentProperties.contentBgColor
+                    getColor(context = context, resId = props.contentProperties.contentBgColor)
                 )
 
                 if (isMultiItem) {

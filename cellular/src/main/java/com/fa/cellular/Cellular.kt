@@ -20,10 +20,7 @@ import com.fa.cellular.models.TableProperties
 import com.fa.cellular.models.getString
 import com.fa.cellular.views.addTableRow
 import android.util.DisplayMetrics
-import android.util.TypedValue
-import android.annotation.SuppressLint
 
-@SuppressLint("ResourceAsColor")
 class Cellular : HorizontalScrollView {
     private lateinit var typedArray: TypedArray
     private lateinit var metrics: DisplayMetrics
@@ -31,14 +28,26 @@ class Cellular : HorizontalScrollView {
     private val properties: Properties by lazy { Properties() }
     private var columnCount: Int? = null
 
-    constructor(context: Context) : super(context) {
+    companion object {
+        var isFromXml: Boolean = false
+    }
+
+    constructor(context: Context, properties: Properties = Properties()) : super(context) {
+        isFromXml = false
         metrics = resources.displayMetrics
         cellularObj = this
+
+        cellularObj.properties.apply props@{
+            this@props.tableProperties = properties.tableProperties
+            this@props.headerProperties = properties.headerProperties
+            this@props.contentProperties = properties.contentProperties
+        }
     }
 
     constructor(context: Context, attrs: AttributeSet) : super(context, attrs) {
         if ((::typedArray.isInitialized).not()) {
             this.apply {
+                isFromXml = true
                 metrics = resources.displayMetrics
                 cellularObj = this
                 contentDescription = getString(context = context, resId = R.string.items_scroll)
@@ -60,30 +69,6 @@ class Cellular : HorizontalScrollView {
         attrs,
         defStyleAttr
     )
-
-    @Throws
-    fun build(): Cellular {
-        if (::cellularObj.isInitialized.not()) {
-            throw DataNotSetException()
-        }
-
-        return cellularObj.apply instance@{
-            this@instance.apply {
-                this.isHorizontalScrollBarEnabled = true
-                this.isVerticalScrollBarEnabled = true
-            }
-
-            this@instance.columnCount?.let count@{ count: Int ->
-                this@instance.addView(
-                    addTableLayout(
-                        context = context,
-                        props = properties,
-                        columnCount = count
-                    )
-                )
-            }
-        }
-    }
 
     fun setItems(
         headerItems: List<String>,
@@ -125,29 +110,46 @@ class Cellular : HorizontalScrollView {
         )
     }
 
-    fun setProperties(properties: Properties = Properties()) {
-        this.properties.also {
-            it.tableProperties = properties.tableProperties
-            it.headerProperties = properties.headerProperties
-            it.contentProperties = properties.contentProperties
+    @Throws
+    fun build(): Cellular {
+        if ((::cellularObj.isInitialized.not())
+        ) {
+            throw DataNotSetException()
+        }
+
+        return cellularObj.apply instance@{
+            this@instance.apply {
+                this.isHorizontalScrollBarEnabled = true
+                this.isVerticalScrollBarEnabled = true
+            }
+
+            this@instance.columnCount?.let count@{ count: Int ->
+                this@instance.addView(
+                    addTableLayout(
+                        context = context,
+                        props = properties,
+                        columnCount = count
+                    )
+                )
+            }
         }
     }
 
     private fun getHeaderProperties() {
         properties.headerProperties = HeaderProperties(
-            headerBgColor = typedArray.getColor(
+            headerBgColor = typedArray.getInt(
                 R.styleable.Cellular_headerBgColor,
                 R.color.header_color
             ),
-            headerPadding = typedArray.getDimension(
-                R.styleable.Cellular_headerPadding,
-                5.0F
+            headerSpacing = typedArray.getInt(
+                R.styleable.Cellular_headerSpacing,
+                5
             ),
-            headerTextSize = typedArray.getDimension(
+            headerTextSize = typedArray.getInt(
                 R.styleable.Cellular_headerTextSize,
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14.0F, metrics)
+                14
             ),
-            headerTextColor = typedArray.getColor(
+            headerTextColor = typedArray.getInt(
                 R.styleable.Cellular_headerTextColor,
                 R.color.text_color
             ),
@@ -182,19 +184,19 @@ class Cellular : HorizontalScrollView {
 
     private fun getContentProperties() {
         properties.contentProperties = ContentProperties(
-            contentBgColor = typedArray.getColor(
+            contentBgColor = typedArray.getInt(
                 R.styleable.Cellular_contentBgColor,
                 R.color.content_color
             ),
-            contentPadding = typedArray.getDimension(
-                R.styleable.Cellular_contentPadding,
-                5.0F
+            contentSpacing = typedArray.getInt(
+                R.styleable.Cellular_contentSpacing,
+                5
             ),
-            contentTextSize = typedArray.getDimension(
+            contentTextSize = typedArray.getInt(
                 R.styleable.Cellular_contentTextSize,
-                TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 14.0F, metrics)
+                14
             ),
-            contentTextColor = typedArray.getColor(
+            contentTextColor = typedArray.getInt(
                 R.styleable.Cellular_contentTextColor,
                 R.color.text_color
             ),

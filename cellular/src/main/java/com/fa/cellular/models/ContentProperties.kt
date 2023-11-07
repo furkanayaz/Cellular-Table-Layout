@@ -1,17 +1,17 @@
 package com.fa.cellular.models
 
-import android.graphics.Color
-import androidx.annotation.ColorInt
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
+import com.fa.cellular.R
+import androidx.annotation.ColorRes
 
 data class ContentProperties(
     private var contentItems: MutableList<String> = mutableListOf(),
-    @ColorInt val contentBgColor: Int = Color.LTGRAY,
-    val contentPadding: Float = 5.0F,
-    val contentTextSize: Float = 14.0F,
-    @ColorInt val contentTextColor: Int = Color.BLACK,
+    @ColorRes val contentBgColor: Int = R.color.lt_gray,
+    val contentSpacing: Int = 5,
+    val contentTextSize: Int = 14,
+    @ColorRes val contentTextColor: Int = R.color.black,
     val contentTextMaxLines: Int = 1,
     val contentTextEllipsize: Ellipsize = Ellipsize.NONE,
     val contentTextStyle: TextStyle = TextStyle.NORMAL,

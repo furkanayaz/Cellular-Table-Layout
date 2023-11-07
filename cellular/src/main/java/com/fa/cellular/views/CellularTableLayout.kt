@@ -7,8 +7,8 @@ import android.widget.TableLayout
 import com.fa.cellular.R
 import com.fa.cellular.enums.Section
 import com.fa.cellular.models.Properties
-import com.fa.cellular.models.getDivDrawable
 import com.fa.cellular.models.getString
+import com.fa.cellular.models.getDivDrawable
 
 fun addTableLayout(context: Context, props: Properties, columnCount: Int): TableLayout =
     TableLayout(context).also {

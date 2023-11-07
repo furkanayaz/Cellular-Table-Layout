@@ -1,17 +1,17 @@
 package com.fa.cellular.models
 
-import android.graphics.Color
-import androidx.annotation.ColorInt
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
+import com.fa.cellular.R
+import androidx.annotation.ColorRes
 
 data class HeaderProperties(
     private var headerItems: MutableList<String> = mutableListOf(),
-    @ColorInt val headerBgColor: Int = Color.DKGRAY,
-    val headerPadding: Float = 5.0F,
-    val headerTextSize: Float = 14.0F,
-    @ColorInt val headerTextColor: Int = Color.WHITE,
+    @ColorRes val headerBgColor: Int = R.color.dk_gray,
+    val headerSpacing: Int = 5,
+    val headerTextSize: Int = 14,
+    @ColorRes val headerTextColor: Int = R.color.white,
     val headerTextMaxLines: Int = 1,
     val headerTextEllipsize: Ellipsize = Ellipsize.NONE,
     val headerTextStyle: TextStyle = TextStyle.NORMAL,
