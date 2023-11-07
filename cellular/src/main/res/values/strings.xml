@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="items_scroll">Items Scroll</string>
+    <string name="items_table">Items Table</string>
+    <string name="item_row">Item Row</string>
+    <string name="item_text">Item Text</string>
+</resources>

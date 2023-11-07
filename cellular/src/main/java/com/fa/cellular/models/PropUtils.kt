@@ -2,43 +2,31 @@ package com.fa.cellular.models
 
 import android.content.Context
 import android.graphics.Typeface
+import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import androidx.core.content.ContextCompat
-import com.fa.cellular.R
-import com.fa.cellular.enums.Color
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
-import androidx.annotation.ColorRes
+import androidx.annotation.StringRes
+import androidx.core.content.res.ResourcesCompat
 
-fun getColor(context: Context, @ColorRes resId: Int): Int = ContextCompat.getColor(context, resId)
+fun getString(context: Context, @StringRes resId: Int): String =
+    ContextCompat.getString(context, resId)
 
-val getColorFromPallet: (Context, Int) -> Int = { context: Context, colorCode: Int ->
-    getColor(
-        context = context, resId = when (colorCode) {
-            Color.BLACK.code -> R.color.black
-            Color.DK_GRAY.code -> R.color.dk_gray
-            Color.LT_GRAY.code -> R.color.lt_gray
-            Color.WHITE.code -> R.color.white
-            Color.RED.code -> R.color.red
-            Color.GREEN.code -> R.color.green
-            Color.BLUE.code -> R.color.blue
-            Color.YELLOW.code -> R.color.yellow
-            Color.PURPLE.code -> R.color.purple
-            Color.PINK.code -> R.color.pink
-            else -> R.color.black
-        }
-    )
+fun getColor(context: Context, resId: Int): Int = ResourcesCompat.getColor(context.resources, resId, null)
+
+val getDivDrawable: (Context, Int) -> Drawable? = { context: Context, divDrawable: Int ->
+    ContextCompat.getDrawable(context, divDrawable)
 }
 
-val getEllipsize: (Int) -> TextUtils.TruncateAt? = { headerTextEllipsize: Int ->
+val getEllipsize: (Ellipsize) -> TextUtils.TruncateAt? = { headerTextEllipsize: Ellipsize ->
     when (headerTextEllipsize) {
-        Ellipsize.NONE.code -> null
-        Ellipsize.START.code -> TextUtils.TruncateAt.START
-        Ellipsize.MIDDLE.code -> TextUtils.TruncateAt.MIDDLE
-        Ellipsize.END.code -> TextUtils.TruncateAt.END
-        Ellipsize.MARQUEE.code -> TextUtils.TruncateAt.MARQUEE
-        else -> null
+        Ellipsize.NONE -> null
+        Ellipsize.START -> TextUtils.TruncateAt.START
+        Ellipsize.MIDDLE -> TextUtils.TruncateAt.MIDDLE
+        Ellipsize.END -> TextUtils.TruncateAt.END
+        Ellipsize.MARQUEE -> TextUtils.TruncateAt.MARQUEE
     }
 }
 val getTextStyle: (Int) -> Int = { headerTextStyle: Int ->
@@ -49,13 +37,12 @@ val getTextStyle: (Int) -> Int = { headerTextStyle: Int ->
         else -> Typeface.NORMAL
     }
 }
-val getTextGravity: (Int) -> Int = { headerTextGravity: Int ->
+val getTextGravity: (Gravity) -> Int = { headerTextGravity: Gravity ->
     when (headerTextGravity) {
-        Gravity.START.code -> android.view.Gravity.START
-        Gravity.END.code -> android.view.Gravity.END
-        Gravity.TOP.code -> android.view.Gravity.TOP
-        Gravity.CENTER.code -> android.view.Gravity.CENTER
-        Gravity.BOTTOM.code -> android.view.Gravity.BOTTOM
-        else -> android.view.Gravity.CENTER
+        Gravity.START -> android.view.Gravity.START
+        Gravity.END -> android.view.Gravity.END
+        Gravity.TOP -> android.view.Gravity.TOP
+        Gravity.CENTER -> android.view.Gravity.CENTER
+        Gravity.BOTTOM -> android.view.Gravity.BOTTOM
     }
 }

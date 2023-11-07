@@ -2,12 +2,9 @@
 <resources>
     <declare-styleable name="Cellular">
 
-        <!-- General Attributes -->
+        <!-- Table Attributes -->
         <attr name="enableDivider" format="boolean" />
-        <attr name="divColor" format="enum">
-            <enum name="black" value="0" />
-            <enum name="white" value="1" />
-        </attr>
+        <attr name="divResId" format="integer" />
 
         <!-- Header Attributes -->
         <attr name="headerPadding" format="dimension" />

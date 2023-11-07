@@ -1,25 +1,27 @@
 package com.fa.cellular.models
 
-import com.fa.cellular.enums.Color
+import android.graphics.Color
+import androidx.annotation.ColorInt
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
 
 data class HeaderProperties(
-    private var headerItems: List<String> = listOf(),
-    val headerBgColor: Int = Color.DK_GRAY.code,
+    private var headerItems: MutableList<String> = mutableListOf(),
+    @ColorInt val headerBgColor: Int = Color.DKGRAY,
     val headerPadding: Float = 5.0F,
-    val headerTextSize: Int = 14,
-    val headerTextColor: Int = Color.WHITE.code,
+    val headerTextSize: Float = 14.0F,
+    @ColorInt val headerTextColor: Int = Color.WHITE,
     val headerTextMaxLines: Int = 1,
-    val headerTextEllipsize: Int = Ellipsize.NONE.code,
-    val headerTextStyle: Int = TextStyle.NORMAL.code,
-    val headerTextGravity: Int = Gravity.CENTER.code,
+    val headerTextEllipsize: Ellipsize = Ellipsize.NONE,
+    val headerTextStyle: TextStyle = TextStyle.NORMAL,
+    val headerTextGravity: Gravity = Gravity.CENTER,
     val headerIsAllCaps: Boolean = true,
 ) {
     fun setHeaderItems(items: List<String>) {
-        headerItems = items
+        headerItems.clear()
+        headerItems.addAll(items)
     }
 
-    fun getHeaderItems(): List<String> = headerItems
+    fun getHeaderItems(): MutableList<String> = headerItems
 }

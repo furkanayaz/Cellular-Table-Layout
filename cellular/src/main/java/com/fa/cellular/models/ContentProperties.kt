@@ -1,25 +1,27 @@
 package com.fa.cellular.models
 
-import com.fa.cellular.enums.Color
+import android.graphics.Color
+import androidx.annotation.ColorInt
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
 
 data class ContentProperties(
-    private var contentItems: List<String> = listOf(),
-    val contentBgColor: Int = Color.LT_GRAY.code,
+    private var contentItems: MutableList<String> = mutableListOf(),
+    @ColorInt val contentBgColor: Int = Color.LTGRAY,
     val contentPadding: Float = 5.0F,
-    val contentTextSize: Int = 14,
-    val contentTextColor: Int = Color.BLACK.code,
+    val contentTextSize: Float = 14.0F,
+    @ColorInt val contentTextColor: Int = Color.BLACK,
     val contentTextMaxLines: Int = 1,
-    val contentTextEllipsize: Int = Ellipsize.NONE.code,
-    val contentTextStyle: Int = TextStyle.NORMAL.code,
-    val contentTextGravity: Int = Gravity.CENTER.code,
+    val contentTextEllipsize: Ellipsize = Ellipsize.NONE,
+    val contentTextStyle: TextStyle = TextStyle.NORMAL,
+    val contentTextGravity: Gravity = Gravity.CENTER,
     val contentIsAllCaps: Boolean = true,
 ) {
     fun setContentItems(items: List<String>) {
-        contentItems = items
+        contentItems.clear()
+        contentItems.addAll(items)
     }
 
-    fun getContentItems(): List<String> = contentItems
+    fun getContentItems(): MutableList<String> = contentItems
 }

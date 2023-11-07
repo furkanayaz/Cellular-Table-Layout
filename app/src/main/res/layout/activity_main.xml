@@ -5,4 +5,45 @@
     android:id="@+id/clMain"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"/>
+    tools:context=".MainActivity">
+
+    <com.fa.cellular.Cellular
+        android:id="@+id/cellular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:contentBgColor="@color/lt_gray"
+        app:contentPadding="5sp"
+        app:contentTextAllCaps="true"
+        app:contentTextColor="@color/black"
+        app:contentTextGravity="center"
+        app:contentTextMaxLines="1"
+        app:contentTextSize="14sp"
+        app:enableDivider="true"
+        app:headerBgColor="@color/dk_gray"
+        app:headerPadding="10sp"
+        app:headerTextAllCaps="true"
+        app:headerTextColor="@color/white"
+        app:headerTextGravity="center"
+        app:headerTextSize="14sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/btnAddContentItem"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/add_content_item"
+        android:textAllCaps="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

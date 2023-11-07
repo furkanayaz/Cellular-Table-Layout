@@ -4,26 +4,32 @@ import android.content.Context
 import android.view.View
 import android.widget.TableLayout
 import android.widget.TableRow
+import com.fa.cellular.R
 import com.fa.cellular.enums.Section
 import com.fa.cellular.models.Properties
-import com.fa.cellular.models.getColorFromPallet
+import com.fa.cellular.models.getString
+import com.fa.cellular.models.getDivDrawable
 
 fun addTableRow(
     context: Context,
     props: Properties,
-    sectionType: Section
+    sectionType: Section,
+    rootView: TableLayout? = null,
+    singleItem: List<String>? = null,
+    isMultiItem: Boolean = true
 ): TableRow =
     TableRow(context).also {
         it.id = View.generateViewId()
+        it.contentDescription = getString(context = context, resId = R.string.item_row)
 
-        if (props.enableDivider) {
-            it.dividerDrawable = getDivColor(context, props.dividerColor)
+        if (props.tableProperties.enableDivider) {
+            it.dividerDrawable = getDivDrawable(context, props.tableProperties.divResId)
             it.showDividers = TableLayout.SHOW_DIVIDER_MIDDLE
         }
 
         when (sectionType) {
             Section.HEADER -> {
-                it.setBackgroundColor(getColorFromPallet(context, props.headerProperties.headerBgColor))
+                it.setBackgroundColor(props.headerProperties.headerBgColor)
 
                 val headerItems: List<String> = props.headerProperties.getHeaderItems()
 
@@ -40,22 +46,31 @@ fun addTableRow(
 
             Section.CONTENT -> {
                 it.setBackgroundColor(
-                    getColorFromPallet(
-                        context,
-                        props.contentProperties.contentBgColor
-                    )
+                    props.contentProperties.contentBgColor
                 )
 
-                val contentItems: List<String> = props.contentProperties.getContentItems()
+                if (isMultiItem) {
+                    val contentItems: List<String> = props.contentProperties.getContentItems()
 
-                contentItems.forEach { text: String ->
-                    it.addView(
-                        addContentTextView(
-                            context = context,
-                            props = props.contentProperties,
-                            text = text
+                    contentItems.forEach { text: String ->
+                        it.addView(
+                            addContentTextView(
+                                context = context,
+                                props = props.contentProperties,
+                                text = text
+                            )
                         )
-                    )
+                    }
+                } else if (rootView != null && singleItem != null) {
+                    singleItem.forEach { text: String ->
+                        it.addView(
+                            addContentTextView(
+                                context = context,
+                                props = props.contentProperties,
+                                text = text
+                            )
+                        )
+                    }
                 }
             }
         }

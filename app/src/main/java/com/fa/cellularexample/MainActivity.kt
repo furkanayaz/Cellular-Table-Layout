@@ -2,17 +2,16 @@ package com.fa.cellularexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.constraintlayout.widget.ConstraintLayout
 import com.fa.cellular.Cellular
-import com.fa.cellular.models.HeaderProperties
-import com.fa.cellular.models.Properties
+import com.fa.cellularexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityMainBinding
+    private var contentCounter: Int = 0
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-
-        val clMain: ConstraintLayout = findViewById(R.id.clMain)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         val headerItems: List<String> = listOf("Full Name", "Age", "OCCUPATION", "Country")
 
@@ -22,6 +21,7 @@ class MainActivity : AppCompatActivity() {
             Person("Furkan Ayaz", 22, "Software Developer", "Türkiye"),
             Person("Mehmet Esen", 28, "Doctor", "Türkiye"),
             Person("KEVIN WHITE", 34, "Police Officer", "USA"),
+            Person("Laure Carpenter", 39, "Medicine", "UK"),
             Person("Laure Carpenter", 39, "Medicine", "UK"),
             Person("STEPHEN KING", 39, "Writer", "USA")
         )
@@ -33,16 +33,23 @@ class MainActivity : AppCompatActivity() {
             contentItems.add(it.country)
         }
 
-        val builder: Cellular.Builder = Cellular(context = this).Builder(
-            properties = Properties(
-                headerProperties = HeaderProperties(headerTextSize = 15)
+        binding.cellular.setItems(
+            headerItems, contentItems
+        )
+
+        binding.cellular.build()
+
+        binding.btnAddContentItem.setOnClickListener {
+            contentCounter++
+            binding.cellular.setContentItem(
+                item = listOf(
+                    "Try $contentCounter",
+                    "Try $contentCounter",
+                    "Try $contentCounter",
+                    "Try $contentCounter"
+                )
             )
-        )
-        builder.setItems(
-            headerItems = headerItems,
-            contentItems = contentItems
-        )
-        clMain.addView(builder.build())
+        }
 
     }
 }
