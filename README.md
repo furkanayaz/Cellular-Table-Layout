@@ -6,9 +6,11 @@
 
 <img src="https://raw.githubusercontent.com/furkanayaz/Cellular-TableLayout/master/layout.jpeg" title="Logo" align="middle" alt="Cellular Library">
 
-## How to Install?
-Step 1. Add the JitPack repository to your build file
+## How To Install?
+
+**Step 1.** Add the JitPack repository to your build file
 Add it in your root build.gradle at the end of repositories:
+
 ```
 dependencyResolutionManagement {
 	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
@@ -23,18 +25,71 @@ dependencyResolutionManagement {
 	}
 }
 ```
-Step 2. Add the dependency
+
+**Step 2.** Add the dependency
+
 ```
 dependencies {
-	      implementation 'com.github.furkanayaz:Cellular-TableLayout:1.4'
+	      implementation 'com.github.furkanayaz:Cellular-TableLayout:1.6'
 }
 ```
+
+## How You Can Use?
+
+**Step 1.** You can use this library with xml:
+
+```
+<com.fa.cellular.Cellular
+        android:id="@+id/cellular"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:contentBgColor="@color/lt_gray"
+        app:contentSpacing="5"
+        app:contentTextAllCaps="true"
+        app:contentTextColor="@color/black"
+        app:contentTextGravity="center"
+        app:contentTextMaxLines="1"
+        app:contentTextSize="14"
+        app:enableDivider="true"
+        app:headerBgColor="@color/dk_gray"
+        app:headerSpacing="10"
+        app:headerTextAllCaps="true"
+        app:headerTextColor="@color/white"
+        app:headerTextGravity="center"
+        app:headerTextSize="14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+```
+
+**Step 1.1.** Don't forget to set items for Cellular :)
+
+```
+binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+binding.cellular.setContentItem(item = item)
+binding.cellular.build()
+```
+
+**Step 2.** You can use this library with programmatically:
+
+```
+val cellular = Cellular(context = this@MainActivity, properties = Properties())
+cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+binding.clMain.addView(cellular.build())
+```
+
 ## Cellular IN ADDITION
 
 * Contains header columns.
 * Contains content rows.
 * Contains multi properties for views.
 
-### Latest Update
+### That's it! I hope you enjoy it with Cellular :)
 
-6 Nov, 2023 - Furkan Ayaz
+#### Latest Update
+
+8 Nov, 2023 - Furkan Ayaz

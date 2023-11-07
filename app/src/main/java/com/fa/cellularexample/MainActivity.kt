@@ -41,7 +41,6 @@ class MainActivity : AppCompatActivity() {
         * */
 
         binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
-
         binding.cellular.build()
 
         binding.btnAddContentItem.setOnClickListener {
