@@ -20,6 +20,8 @@ import com.fa.cellular.models.TableProperties
 import com.fa.cellular.models.getString
 import com.fa.cellular.views.addTableRow
 import android.util.DisplayMetrics
+import android.widget.TableRow
+import com.fa.cellular.models.getColor
 
 class Cellular : HorizontalScrollView {
     private lateinit var typedArray: TypedArray
@@ -106,7 +108,16 @@ class Cellular : HorizontalScrollView {
                 rootView = rootView,
                 singleItem = item,
                 isMultiItem = false
-            )
+            ).also { row: TableRow ->
+                val controller: Int =
+                    properties.contentProperties.getContentItems().size / properties.headerProperties.getHeaderItems().size
+                row.setBackgroundColor(
+                    getColor(
+                        context = context,
+                        resId = if ((controller % 2) == 0) properties.contentProperties.contentBgColor else properties.contentProperties.contentBgEffectColor
+                    )
+                )
+            }
         )
     }
 
@@ -186,7 +197,11 @@ class Cellular : HorizontalScrollView {
         properties.contentProperties = ContentProperties(
             contentBgColor = typedArray.getInt(
                 R.styleable.Cellular_contentBgColor,
-                R.color.content_color
+                R.color.content_bg
+            ),
+            contentBgEffectColor = typedArray.getInt(
+                R.styleable.Cellular_contentBgEffectColor,
+                R.color.content_effect_bg
             ),
             contentSpacing = typedArray.getInt(
                 R.styleable.Cellular_contentSpacing,

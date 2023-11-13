@@ -4,9 +4,11 @@ import android.content.Context
 import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.TableLayout
+import android.widget.TableRow
 import com.fa.cellular.R
 import com.fa.cellular.enums.Section
 import com.fa.cellular.models.Properties
+import com.fa.cellular.models.getColor
 import com.fa.cellular.models.getString
 import com.fa.cellular.models.getDivDrawable
 
@@ -43,7 +45,14 @@ fun addTableLayout(context: Context, props: Properties, columnCount: Int): Table
                         )
                     },
                     sectionType = Section.CONTENT
-                )
+                ).also { row: TableRow ->
+                    row.setBackgroundColor(
+                        getColor(
+                            context = context,
+                            resId = if ((listIndex % 2) == 0) props.contentProperties.contentBgColor else props.contentProperties.contentBgEffectColor
+                        )
+                    )
+                }
             )
         }
     }
