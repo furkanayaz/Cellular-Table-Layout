@@ -27,6 +27,7 @@
         <!-- Content Attributes -->
         <attr name="contentSpacing" format="integer" />
         <attr name="contentBgColor" format="integer" />
+        <attr name="contentBgEffectColor" format="integer" />
 
         <attr name="contentTextGravity" format="enum">
             <enum name="start" value="0" />

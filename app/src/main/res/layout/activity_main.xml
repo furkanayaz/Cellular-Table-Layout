@@ -16,7 +16,8 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
-        app:contentBgColor="@color/lt_gray"
+        app:contentBgColor="@color/content_bg"
+        app:contentBgEffectColor="@color/content_effect_bg"
         app:contentSpacing="5"
         app:contentTextAllCaps="true"
         app:contentTextColor="@color/black"
@@ -24,7 +25,7 @@
         app:contentTextMaxLines="1"
         app:contentTextSize="14"
         app:enableDivider="true"
-        app:headerBgColor="@color/dk_gray"
+        app:headerBgColor="@color/header_bg"
         app:headerSpacing="10"
         app:headerTextAllCaps="true"
         app:headerTextColor="@color/white"
@@ -41,11 +42,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
         android:text="@string/add_content_item"
         android:textAllCaps="true"
+        android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

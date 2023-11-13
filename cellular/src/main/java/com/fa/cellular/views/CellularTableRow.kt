@@ -51,10 +51,6 @@ fun addTableRow(
             }
 
             Section.CONTENT -> {
-                it.setBackgroundColor(
-                    getColor(context = context, resId = props.contentProperties.contentBgColor)
-                )
-
                 if (isMultiItem) {
                     val contentItems: List<String> = props.contentProperties.getContentItems()
 
