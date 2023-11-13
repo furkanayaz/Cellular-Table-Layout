@@ -92,4 +92,4 @@ binding.clMain.addView(cellular.build())
 
 #### Latest Update
 
-8 Nov, 2023 - Furkan Ayaz
+13 Nov, 2023 - Furkan Ayaz
