@@ -17,16 +17,15 @@ class MainActivity : AppCompatActivity() {
         val contentItems: MutableList<String> = mutableListOf()
 
         val persons: List<Person> = listOf(
-            Person("Furkan Ayaz", 22, "Software Developer", "Türkiye"),
-            Person("Mehmet Esen", 28, "Doctor", "Türkiye"),
-            Person("KEVIN WHITE", 34, "Police Officer", "USA"),
-            Person("Laure Carpenter", 39, "Medicine", "UK"),
-            Person("Laure Carpenter", 39, "Medicine", "UK"),
-            Person("STEPHEN KING", 39, "WRITER", "USA")
+            Person(fullName = "Furkan Ayaz", 22, "Software Developer", "Türkiye"),
+            Person(fullName = "Ahmet Beyaz", 30, "Barber", "Azerbaijan"),
+            Person(fullName = "Robert Koen", 52, "Business Analyst", "Germany"),
+            Person(fullName = "Oliver James", 28, "Debugger", "France"),
+            Person(fullName = "Kuznetsov Lebedev", 34, "YouTuber", "Russia"),
         )
 
         persons.forEach {
-            contentItems.add(it.name)
+            contentItems.add(it.fullName)
             contentItems.add(it.age.toString())
             contentItems.add(it.job)
             contentItems.add(it.country)

@@ -20,10 +20,11 @@ import com.fa.cellular.models.TableProperties
 import com.fa.cellular.models.getString
 import com.fa.cellular.views.addTableRow
 import android.util.DisplayMetrics
+import android.widget.ScrollView
 import android.widget.TableRow
 import com.fa.cellular.models.getColor
 
-class Cellular : HorizontalScrollView {
+class Cellular : ScrollView {
     private lateinit var typedArray: TypedArray
     private lateinit var metrics: DisplayMetrics
     private lateinit var cellularObj: Cellular
@@ -53,8 +54,6 @@ class Cellular : HorizontalScrollView {
                 metrics = resources.displayMetrics
                 cellularObj = this
                 contentDescription = getString(context = context, resId = R.string.items_scroll)
-                isHorizontalScrollBarEnabled = true
-                isVerticalScrollBarEnabled = true
             }
 
             getTypedArray(attrs = attrs)
@@ -98,7 +97,8 @@ class Cellular : HorizontalScrollView {
             throw ItemSizeException()
         }
 
-        val rootView: TableLayout = cellularObj.children.first() as TableLayout
+        val rootView: TableLayout =
+            (cellularObj.children.first() as HorizontalScrollView).children.first() as TableLayout
         properties.contentProperties.getContentItems().addAll(item)
         rootView.addView(
             addTableRow(
@@ -129,19 +129,18 @@ class Cellular : HorizontalScrollView {
         }
 
         return cellularObj.apply instance@{
-            this@instance.apply {
-                this.isHorizontalScrollBarEnabled = true
-                this.isVerticalScrollBarEnabled = true
-            }
+            val horizontalSv = HorizontalScrollView(context)
 
-            this@instance.columnCount?.let count@{ count: Int ->
-                this@instance.addView(
+            columnCount?.let count@{ count: Int ->
+                horizontalSv.addView(
                     addTableLayout(
                         context = context,
                         props = properties,
                         columnCount = count
                     )
                 )
+
+                this@instance.addView(horizontalSv)
             }
         }
     }
