@@ -32,7 +32,7 @@ class Cellular : ScrollView {
     private var columnCount: Int? = null
 
     companion object {
-        var isFromXml: Boolean = false
+        internal var isFromXml: Boolean = false
     }
 
     constructor(context: Context, properties: Properties = Properties()) : super(context) {
