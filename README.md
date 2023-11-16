@@ -42,11 +42,9 @@ dependencies {
 <com.fa.cellular.Cellular
         android:id="@+id/cellular"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        app:contentBgColor="@color/lt_gray"
+        android:layout_height="0dp"
+        app:contentBgColor="@color/content_bg"
+        app:contentBgEffectColor="@color/content_effect_bg"
         app:contentSpacing="5"
         app:contentTextAllCaps="true"
         app:contentTextColor="@color/black"
@@ -54,12 +52,13 @@ dependencies {
         app:contentTextMaxLines="1"
         app:contentTextSize="14"
         app:enableDivider="true"
-        app:headerBgColor="@color/dk_gray"
+        app:headerBgColor="@color/header_bg"
         app:headerSpacing="10"
         app:headerTextAllCaps="true"
         app:headerTextColor="@color/white"
         app:headerTextGravity="center"
         app:headerTextSize="14"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddContentItem"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -92,4 +91,4 @@ binding.clMain.addView(cellular.build())
 
 #### Latest Update
 
-13 Nov, 2023 - Furkan Ayaz
+17 Nov, 2023 - Furkan Ayaz

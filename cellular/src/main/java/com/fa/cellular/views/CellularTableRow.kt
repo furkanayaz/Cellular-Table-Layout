@@ -11,7 +11,7 @@ import com.fa.cellular.models.getColor
 import com.fa.cellular.models.getString
 import com.fa.cellular.models.getDivDrawable
 
-fun addTableRow(
+internal fun addTableRow(
     context: Context,
     props: Properties,
     sectionType: Section,

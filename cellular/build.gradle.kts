@@ -1,7 +1,8 @@
+@file:Suppress("DSL_SCOPE_VIOLATION")
 plugins {
-    id("com.android.library")
-    id("org.jetbrains.kotlin.android")
-    id("maven-publish")
+    id(libs.plugins.cellular.android.library.get().pluginId)
+    id(libs.plugins.cellular.kotlin.android.get().pluginId)
+    id(libs.plugins.cellular.maven.publish.get().pluginId)
 }
 
 android {
@@ -40,8 +41,8 @@ android {
 }
 
 dependencies {
-    implementation("androidx.core:core-ktx:1.12.0")
-    implementation("com.google.android.material:material:1.10.0")
+    implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.constraintlayout)
 }
 
 publishing {
@@ -49,7 +50,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.furkanayaz"
             artifactId = "cellular"
-            version = "1.8"
+            version = "1.9"
 
             afterEvaluate {
                 from(components["release"])

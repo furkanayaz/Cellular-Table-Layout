@@ -14,7 +14,7 @@ import com.fa.cellular.models.getEllipsize
 import com.fa.cellular.models.getTextGravity
 import com.fa.cellular.models.getTextStyle
 
-fun addHeaderTextView(context: Context, props: HeaderProperties, text: String): TextView =
+internal fun addHeaderTextView(context: Context, props: HeaderProperties, text: String): TextView =
     TextView(context).also {
         it.id = View.generateViewId()
         it.contentDescription = getString(context = context, resId = R.string.item_text)
@@ -29,7 +29,7 @@ fun addHeaderTextView(context: Context, props: HeaderProperties, text: String): 
         it.setTextColor(getColor(context = context, resId = props.headerTextColor))
     }
 
-fun addContentTextView(context: Context, props: ContentProperties, text: String): TextView =
+internal fun addContentTextView(context: Context, props: ContentProperties, text: String): TextView =
     TextView(context).also {
         it.id = View.generateViewId()
         it.contentDescription = getString(context = context, resId = R.string.item_text)

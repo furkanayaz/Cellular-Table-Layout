@@ -12,7 +12,7 @@ import com.fa.cellular.models.getColor
 import com.fa.cellular.models.getString
 import com.fa.cellular.models.getDivDrawable
 
-fun addTableLayout(context: Context, props: Properties, columnCount: Int): TableLayout =
+internal fun addTableLayout(context: Context, props: Properties, columnCount: Int): TableLayout =
     TableLayout(context).also {
         it.id = View.generateViewId()
         it.contentDescription = getString(context = context, resId = R.string.items_table)

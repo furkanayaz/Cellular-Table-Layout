@@ -14,32 +14,32 @@ import com.fa.cellular.Cellular
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 
-fun getString(context: Context, @StringRes resId: Int): String =
+internal fun getString(context: Context, @StringRes resId: Int): String =
     ContextCompat.getString(context, resId)
 
-fun getColor(context: Context, @ColorRes resId: Int): Int =
+internal fun getColor(context: Context, @ColorRes resId: Int): Int =
     if (Cellular.isFromXml) resId else ResourcesCompat.getColor(context.resources, resId, null)
 
-fun getSize(context: Context, size: Int): Float = TypedValue.applyDimension(
-    TypedValue.COMPLEX_UNIT_PX,
-    size.toFloat(),
-    context.resources.displayMetrics
+internal fun getSize(context: Context, size: Int): Float = TypedValue.applyDimension(
+    TypedValue.COMPLEX_UNIT_PX, size.toFloat(), context.resources.displayMetrics
 )
 
-val getDivDrawable: (Context, Int) -> Drawable? = { context: Context, divDrawable: Int ->
+internal val getDivDrawable: (Context, Int) -> Drawable? = { context: Context, divDrawable: Int ->
     ContextCompat.getDrawable(context, divDrawable)
 }
 
-val getEllipsize: (Ellipsize) -> TextUtils.TruncateAt? = { headerTextEllipsize: Ellipsize ->
-    when (headerTextEllipsize) {
-        Ellipsize.NONE -> null
-        Ellipsize.START -> TextUtils.TruncateAt.START
-        Ellipsize.MIDDLE -> TextUtils.TruncateAt.MIDDLE
-        Ellipsize.END -> TextUtils.TruncateAt.END
-        Ellipsize.MARQUEE -> TextUtils.TruncateAt.MARQUEE
+internal val getEllipsize: (Ellipsize) -> TextUtils.TruncateAt? =
+    { headerTextEllipsize: Ellipsize ->
+        when (headerTextEllipsize) {
+            Ellipsize.NONE -> null
+            Ellipsize.START -> TextUtils.TruncateAt.START
+            Ellipsize.MIDDLE -> TextUtils.TruncateAt.MIDDLE
+            Ellipsize.END -> TextUtils.TruncateAt.END
+            Ellipsize.MARQUEE -> TextUtils.TruncateAt.MARQUEE
+        }
     }
-}
-val getTextStyle: (Int) -> Int = { headerTextStyle: Int ->
+
+internal val getTextStyle: (Int) -> Int = { headerTextStyle: Int ->
     when (headerTextStyle) {
         TextStyle.NORMAL.code -> Typeface.NORMAL
         TextStyle.BOLD.code -> Typeface.BOLD
@@ -47,7 +47,8 @@ val getTextStyle: (Int) -> Int = { headerTextStyle: Int ->
         else -> Typeface.NORMAL
     }
 }
-val getTextGravity: (Gravity) -> Int = { headerTextGravity: Gravity ->
+
+internal val getTextGravity: (Gravity) -> Int = { headerTextGravity: Gravity ->
     when (headerTextGravity) {
         Gravity.START -> android.view.Gravity.START
         Gravity.END -> android.view.Gravity.END
