@@ -89,7 +89,7 @@ binding.cellular.build()
 ```
 val cellular = Cellular(context = this@MainActivity, properties = Properties())
 cellular.setItems(headerItems = headerItems, contentItems = contentItems)
-cellular.setOnRowClickListener { 
+cellular.setOnRowClickListener { items: List<String> ->
       Log.e("Items", items.joinToString(separator = "-"))
 }
 binding.clMain.addView(cellular.build())
