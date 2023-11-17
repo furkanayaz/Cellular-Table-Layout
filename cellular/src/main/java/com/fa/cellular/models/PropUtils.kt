@@ -5,12 +5,17 @@ import android.graphics.Typeface
 import android.graphics.drawable.Drawable
 import android.text.TextUtils
 import android.util.TypedValue
+import android.view.View
+import android.widget.TableRow
+import android.widget.TextView
 import androidx.core.content.ContextCompat
 import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
 import androidx.core.content.res.ResourcesCompat
 import com.fa.cellular.Cellular
+import androidx.core.view.children
+import com.fa.cellular.enums.ActionAnimation
 import androidx.annotation.ColorRes
 import androidx.annotation.StringRes
 
@@ -56,4 +61,34 @@ internal val getTextGravity: (Gravity) -> Int = { headerTextGravity: Gravity ->
         Gravity.CENTER -> android.view.Gravity.CENTER
         Gravity.BOTTOM -> android.view.Gravity.BOTTOM
     }
+}
+
+internal fun getAnimProperties(actionAnimation: ActionAnimation): Pair<Boolean, Boolean> {
+    var isAlpha = false
+    var isScale = false
+
+    when (actionAnimation.code) {
+        ActionAnimation.NONE.code -> {
+            isAlpha = false
+            isScale = false
+        }
+
+        ActionAnimation.ALPHA.code -> isAlpha = true
+        ActionAnimation.SCALE.code -> isScale = true
+        ActionAnimation.BOTH.code -> {
+            isAlpha = true
+            isScale = true
+        }
+    }
+
+    return Pair(first = isAlpha, second = isScale)
+}
+
+internal fun getItemsFromRow(row: TableRow): List<String> {
+    val items: MutableList<String> = mutableListOf()
+    row.children.forEach { tv: View ->
+        items.add((tv as TextView).text.toString())
+    }
+
+    return items.toList()
 }

@@ -49,6 +49,7 @@ dependencies {
         app:contentTextAllCaps="true"
         app:contentTextColor="@color/black"
         app:contentTextGravity="center"
+        app:contentActionAnimation="both"
         app:contentTextMaxLines="1"
         app:contentTextSize="14"
         app:enableDivider="true"
@@ -69,7 +70,17 @@ dependencies {
 
 ```
 binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
-binding.cellular.setContentItem(item = item)
+binding.cellular.setContentItem(
+      item = listOf(
+            "Item $contentCounter",
+            "Item $contentCounter",
+            "Item $contentCounter",
+            "Item $contentCounter"
+      )
+)
+binding.cellular.setOnRowClickListener { items: List<String> ->
+      Log.e("Items", items.joinToString(separator = "-"))
+}
 binding.cellular.build()
 ```
 
@@ -78,6 +89,9 @@ binding.cellular.build()
 ```
 val cellular = Cellular(context = this@MainActivity, properties = Properties())
 cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+cellular.setOnRowClickListener { 
+      Log.e("Items", items.joinToString(separator = "-"))
+}
 binding.clMain.addView(cellular.build())
 ```
 

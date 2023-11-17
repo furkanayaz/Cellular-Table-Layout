@@ -47,3 +47,7 @@ x
 Hcellular/src/main/java/com/fa/cellular/exceptions/DataNotSetException.kt,4\b\4bd9c1c009281efabd45eea9d8dee64fefa957df
 v
 Fcellular/src/main/java/com/fa/cellular/exceptions/ItemSizeException.kt,8\7\871414abe765d6f614976d1fc3a07f59cff465a2
+i
+9cellular/src/main/java/com/fa/cellular/views/ViewUtils.kt,0\3\03304fe56a63f88ffa9a4615c3822a2d45dc4846
+o
+?cellular/src/main/java/com/fa/cellular/enums/ActionAnimation.kt,0\3\03af4cae45a07d2ed00f6431d08a75f10d6a6451

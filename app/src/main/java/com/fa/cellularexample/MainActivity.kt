@@ -2,6 +2,9 @@ package com.fa.cellularexample
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import com.fa.cellular.Cellular
+import com.fa.cellular.models.Properties
 import com.fa.cellularexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -35,21 +38,27 @@ class MainActivity : AppCompatActivity() {
          *  Programmatically...
             val cellular = Cellular(context = this@MainActivity, properties = Properties())
             cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+            cellular.setOnRowClickListener {
+            Log.e("Items", items.joinToString(separator = "-"))
+            }
             binding.clMain.addView(cellular.build())
         *
         * */
 
         binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
+        binding.cellular.setOnRowClickListener { items: List<String> ->
+            Log.e("Items", items.joinToString(separator = "-"))
+        }
         binding.cellular.build()
 
         binding.btnAddContentItem.setOnClickListener {
             contentCounter++
             binding.cellular.setContentItem(
                 item = listOf(
-                    "Try $contentCounter",
-                    "Try $contentCounter",
-                    "Try $contentCounter",
-                    "Try $contentCounter"
+                    "Item $contentCounter",
+                    "Item $contentCounter",
+                    "Item $contentCounter",
+                    "Item $contentCounter"
                 )
             )
         }

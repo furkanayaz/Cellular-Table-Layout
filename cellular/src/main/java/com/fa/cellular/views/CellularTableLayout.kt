@@ -5,14 +5,21 @@ import android.view.View
 import android.view.ViewGroup.LayoutParams
 import android.widget.TableLayout
 import android.widget.TableRow
+import com.fa.cellular.Cellular
 import com.fa.cellular.R
 import com.fa.cellular.enums.Section
 import com.fa.cellular.models.Properties
+import com.fa.cellular.models.getAnimProperties
 import com.fa.cellular.models.getColor
 import com.fa.cellular.models.getString
+import com.fa.cellular.models.getItemsFromRow
 import com.fa.cellular.models.getDivDrawable
 
-internal fun addTableLayout(context: Context, props: Properties, columnCount: Int): TableLayout =
+internal fun addTableLayout(
+    context: Context,
+    props: Properties,
+    columnCount: Int
+): TableLayout =
     TableLayout(context).also {
         it.id = View.generateViewId()
         it.contentDescription = getString(context = context, resId = R.string.items_table)
@@ -35,6 +42,9 @@ internal fun addTableLayout(context: Context, props: Properties, columnCount: In
         val contentItems: List<List<String>> =
             props.contentProperties.getContentItems().chunked(size = columnCount)
 
+        val animProperties: Pair<Boolean, Boolean> =
+            getAnimProperties(actionAnimation = props.contentProperties.contentActionAnimation)
+
         repeat(times = contentItems.size) { listIndex: Int ->
             it.addView(
                 addTableRow(
@@ -52,6 +62,15 @@ internal fun addTableLayout(context: Context, props: Properties, columnCount: In
                             resId = if ((listIndex % 2) == 0) props.contentProperties.contentBgColor else props.contentProperties.contentBgEffectColor
                         )
                     )
+
+                    row.withAnimation(
+                        isAlpha = animProperties.first,
+                        isScale = animProperties.second
+                    )
+
+                    row.setOnClickListener {
+                        Cellular.rowAction?.invoke(getItemsFromRow(row = row))
+                    }
                 }
             )
         }

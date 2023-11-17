@@ -19,6 +19,7 @@
         app:contentTextAllCaps="true"
         app:contentTextColor="@color/black"
         app:contentTextGravity="center"
+        app:contentActionAnimation="both"
         app:contentTextMaxLines="1"
         app:contentTextSize="14"
         app:enableDivider="true"
