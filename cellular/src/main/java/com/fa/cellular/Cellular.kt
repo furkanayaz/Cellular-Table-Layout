@@ -22,7 +22,11 @@ import com.fa.cellular.views.addTableRow
 import android.util.DisplayMetrics
 import android.widget.ScrollView
 import android.widget.TableRow
+import com.fa.cellular.enums.ActionAnimation
+import com.fa.cellular.models.getAnimProperties
 import com.fa.cellular.models.getColor
+import com.fa.cellular.models.getItemsFromRow
+import com.fa.cellular.views.withAnimation
 
 class Cellular : ScrollView {
     private lateinit var typedArray: TypedArray
@@ -32,6 +36,7 @@ class Cellular : ScrollView {
     private var columnCount: Int? = null
 
     companion object {
+        internal var rowAction: ((List<String>) -> Unit)? = null
         internal var isFromXml: Boolean = false
     }
 
@@ -97,6 +102,9 @@ class Cellular : ScrollView {
             throw ItemSizeException()
         }
 
+        val animProperties: Pair<Boolean, Boolean> =
+            getAnimProperties(actionAnimation = properties.contentProperties.contentActionAnimation)
+
         val rootView: TableLayout =
             (cellularObj.children.first() as HorizontalScrollView).children.first() as TableLayout
         properties.contentProperties.getContentItems().addAll(item)
@@ -114,11 +122,21 @@ class Cellular : ScrollView {
                 row.setBackgroundColor(
                     getColor(
                         context = context,
-                        resId = if ((controller % 2) == 0) properties.contentProperties.contentBgColor else properties.contentProperties.contentBgEffectColor
+                        resId = if ((controller % 2) == 1) properties.contentProperties.contentBgColor else properties.contentProperties.contentBgEffectColor
                     )
                 )
+
+                row.withAnimation(isAlpha = animProperties.first, isScale = animProperties.second)
+
+                row.setOnClickListener {
+                    rowAction?.invoke(getItemsFromRow(row = row))
+                }
             }
         )
+    }
+
+    fun setOnRowClickListener(action: (List<String>) -> Unit) {
+        rowAction = action
     }
 
     @Throws
@@ -236,6 +254,12 @@ class Cellular : ScrollView {
                     Gravity.CENTER.code
                 )
             } ?: Gravity.CENTER,
+            contentActionAnimation = ActionAnimation.entries.find {
+                it.code == typedArray.getInt(
+                    R.styleable.Cellular_contentActionAnimation,
+                    ActionAnimation.NONE.code
+                )
+            } ?: ActionAnimation.NONE,
             contentIsAllCaps = typedArray.getBoolean(
                 R.styleable.Cellular_contentTextAllCaps,
                 false

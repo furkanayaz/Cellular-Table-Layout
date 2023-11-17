@@ -8,7 +8,7 @@
 
         <!-- Header Attributes -->
         <attr name="headerSpacing" format="integer" />
-        <attr name="headerBgColor" format="integer" />
+        <attr name="headerBgColor" format="color" />
 
         <attr name="headerTextGravity" format="enum">
             <enum name="start" value="0" />
@@ -18,7 +18,7 @@
             <enum name="bottom" value="4" />
         </attr>
         <attr name="headerTextSize" format="integer" />
-        <attr name="headerTextColor" format="integer" />
+        <attr name="headerTextColor" format="color" />
         <attr name="headerTextMaxLines" format="integer" />
         <attr name="headerTextEllipsize" format="integer" />
         <attr name="headerTextAllCaps" format="boolean" />
@@ -26,8 +26,8 @@
 
         <!-- Content Attributes -->
         <attr name="contentSpacing" format="integer" />
-        <attr name="contentBgColor" format="integer" />
-        <attr name="contentBgEffectColor" format="integer" />
+        <attr name="contentBgColor" format="color" />
+        <attr name="contentBgEffectColor" format="color" />
 
         <attr name="contentTextGravity" format="enum">
             <enum name="start" value="0" />
@@ -36,8 +36,16 @@
             <enum name="center" value="3" />
             <enum name="bottom" value="4" />
         </attr>
+
+        <attr name="contentActionAnimation" format="enum">
+            <enum name="none" value="0" />
+            <enum name="alpha" value="1" />
+            <enum name="scale" value="2" />
+            <enum name="both" value="3" />
+        </attr>
+
         <attr name="contentTextSize" format="integer" />
-        <attr name="contentTextColor" format="integer" />
+        <attr name="contentTextColor" format="color" />
         <attr name="contentTextMaxLines" format="integer" />
         <attr name="contentTextEllipsize" format="integer" />
         <attr name="contentTextAllCaps" format="boolean" />

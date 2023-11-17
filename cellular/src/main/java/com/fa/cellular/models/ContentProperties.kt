@@ -4,6 +4,7 @@ import com.fa.cellular.enums.Ellipsize
 import com.fa.cellular.enums.Gravity
 import com.fa.cellular.enums.TextStyle
 import com.fa.cellular.R
+import com.fa.cellular.enums.ActionAnimation
 import androidx.annotation.ColorRes
 
 data class ContentProperties(
@@ -17,6 +18,7 @@ data class ContentProperties(
     val contentTextEllipsize: Ellipsize = Ellipsize.NONE,
     val contentTextStyle: TextStyle = TextStyle.NORMAL,
     val contentTextGravity: Gravity = Gravity.CENTER,
+    val contentActionAnimation: ActionAnimation = ActionAnimation.NONE,
     val contentIsAllCaps: Boolean = true,
 ) {
     fun setContentItems(items: List<String>) {
