@@ -36,6 +36,23 @@ dependencies {
 
 ## How You Can Use?
 
+> [!CAUTION]
+> The reason why Java Reflection API is not used in Cellular is that the relevant API randomly pulls defined variables within the model class and causes confusion in the table.
+
+> [!TIP]
+> If the data you want to load is a model class and they are kept in a list, you can use your table by establishing a structure similar to the code example below.
+
+> val myList: List<Person> = listOf(Person("Elliot", 25), Person("Amy", 22), Person("Steve", 30))
+
+> val myListToString: MutableList<String> = mutableListOf()
+
+> myList.foreach { person: Person ->
+	myListToString.add(person.name)
+	myListToString.add(person.age.toString())
+}
+
+> cellular.setItems(headerItems, myListToString)
+
 **Step 1.** You can use this library with xml:
 
 ```
