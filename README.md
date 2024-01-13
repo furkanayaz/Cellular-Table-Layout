@@ -16,6 +16,7 @@ dependencyResolutionManagement {
 	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
 	repositories {
 		mavenCentral()
+		google()
 		/*
         	 * If you are currently using Kotlin DSL
         	 * you must replace with maven { url = uri("https://www.jitpack.io" ) } in below code.
@@ -30,7 +31,7 @@ dependencyResolutionManagement {
 
 ```
 dependencies {
-	      implementation 'com.github.furkanayaz:Cellular-TableLayout:1.6'
+	      implementation 'com.github.furkanayaz:Cellular-TableLayout:2.0'
 }
 ```
 
