@@ -58,6 +58,7 @@ class Cellular : ScrollView {
                 isFromXml = true
                 metrics = resources.displayMetrics
                 cellularObj = this
+                cellularObj.removeAllViews()
                 contentDescription = getString(context = context, resId = R.string.items_scroll)
             }
 
@@ -147,6 +148,7 @@ class Cellular : ScrollView {
         }
 
         return cellularObj.apply instance@{
+            this@instance.removeAllViews()
             val horizontalSv = HorizontalScrollView(context)
 
             columnCount?.let count@{ count: Int ->
