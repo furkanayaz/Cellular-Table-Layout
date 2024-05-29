@@ -36,7 +36,7 @@ class Cellular : ScrollView {
     private var columnCount: Int? = null
 
     companion object {
-        internal var rowAction: ((List<String>) -> Unit)? = null
+        internal var rowAction: ((List<String>, Int) -> Unit)? = null
         internal var isFromXml: Boolean = false
     }
 
@@ -130,13 +130,13 @@ class Cellular : ScrollView {
                 row.withAnimation(isAlpha = animProperties.first, isScale = animProperties.second)
 
                 row.setOnClickListener {
-                    rowAction?.invoke(getItemsFromRow(row = row))
+                    rowAction?.invoke(getItemsFromRow(row = row), rootView.children.indexOf(row) - 1)
                 }
             }
         )
     }
 
-    fun setOnRowClickListener(action: (List<String>) -> Unit) {
+    fun setOnRowClickListener(action: (List<String>, Int) -> Unit) {
         rowAction = action
     }
 

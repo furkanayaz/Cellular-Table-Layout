@@ -69,7 +69,7 @@ internal fun addTableLayout(
                     )
 
                     row.setOnClickListener {
-                        Cellular.rowAction?.invoke(getItemsFromRow(row = row))
+                        Cellular.rowAction?.invoke(getItemsFromRow(row = row), listIndex)
                     }
                 }
             )

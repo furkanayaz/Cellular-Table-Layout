@@ -3,8 +3,6 @@ package com.fa.cellularexample
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import com.fa.cellular.Cellular
-import com.fa.cellular.models.Properties
 import com.fa.cellularexample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -46,8 +44,9 @@ class MainActivity : AppCompatActivity() {
         * */
 
         binding.cellular.setItems(headerItems = headerItems, contentItems = contentItems)
-        binding.cellular.setOnRowClickListener { items: List<String> ->
+        binding.cellular.setOnRowClickListener { items: List<String>, selectedIndex: Int ->
             Log.e("Items", items.joinToString(separator = "-"))
+            Log.e("SelectedIndex", selectedIndex.toString())
         }
         binding.cellular.build()
 
