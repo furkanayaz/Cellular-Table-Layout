@@ -31,7 +31,7 @@ dependencyResolutionManagement {
 
 ```
 dependencies {
-	        implementation 'com.github.furkanayaz:Cellular-Table-Layout:2.2'
+	        implementation 'com.github.furkanayaz:Cellular-TableLayout:2.2'
 }
 ```
 
