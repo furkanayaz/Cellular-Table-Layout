@@ -32,6 +32,7 @@ internal fun addHeaderTextView(context: Context, props: HeaderProperties, text: 
 internal fun addContentTextView(context: Context, props: ContentProperties, text: String): TextView =
     TextView(context).also {
         it.id = View.generateViewId()
+        it.setTextIsSelectable(props.contentIsCopyable)
         it.contentDescription = getString(context = context, resId = R.string.item_text)
         it.setPadding(getSize(context = context, props.contentSpacing).toInt())
         it.maxLines = props.contentTextMaxLines

@@ -50,7 +50,7 @@ publishing {
         register<MavenPublication>("release") {
             groupId = "com.github.furkanayaz"
             artifactId = "cellular"
-            version = "2.1"
+            version = "2.3"
 
             afterEvaluate {
                 from(components["release"])

@@ -25,6 +25,7 @@
         <attr name="headerTextStyle" format="integer" />
 
         <!-- Content Attributes -->
+        <attr name="contentIsCopyable" format="boolean" />
         <attr name="contentSpacing" format="integer" />
         <attr name="contentBgColor" format="color" />
         <attr name="contentBgEffectColor" format="color" />

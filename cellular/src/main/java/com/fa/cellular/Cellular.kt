@@ -222,6 +222,7 @@ class Cellular : ScrollView {
                 R.styleable.Cellular_contentBgEffectColor,
                 R.color.content_effect_bg
             ),
+            contentIsCopyable = typedArray.getBoolean(R.styleable.Cellular_contentIsCopyable, false),
             contentSpacing = typedArray.getInt(
                 R.styleable.Cellular_contentSpacing,
                 5

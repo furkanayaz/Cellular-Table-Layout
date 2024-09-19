@@ -15,6 +15,7 @@
         android:layout_height="0dp"
         app:contentBgColor="@color/content_bg"
         app:contentBgEffectColor="@color/content_effect_bg"
+        app:contentIsCopyable="true"
         app:contentSpacing="5"
         app:contentTextAllCaps="true"
         app:contentTextColor="@color/black"

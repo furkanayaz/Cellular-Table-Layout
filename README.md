@@ -31,7 +31,7 @@ dependencyResolutionManagement {
 
 ```
 dependencies {
-	        implementation 'com.github.furkanayaz:Cellular-TableLayout:2.2'
+	        implementation 'com.github.furkanayaz:Cellular-TableLayout:2.3'
 }
 ```
 
@@ -125,4 +125,4 @@ binding.clMain.addView(cellular.build())
 
 #### Latest Update
 
-18 Jan, 2023 - Furkan Ayaz
+19 Sep, 2024 - Furkan Ayaz

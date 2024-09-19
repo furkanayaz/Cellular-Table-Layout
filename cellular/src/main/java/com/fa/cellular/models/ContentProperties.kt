@@ -11,6 +11,7 @@ data class ContentProperties(
     private var contentItems: MutableList<String> = mutableListOf(),
     @ColorRes val contentBgColor: Int = R.color.content_bg,
     @ColorRes val contentBgEffectColor: Int = R.color.content_effect_bg,
+    val contentIsCopyable: Boolean = false,
     val contentSpacing: Int = 5,
     val contentTextSize: Int = 14,
     @ColorRes val contentTextColor: Int = R.color.black,
